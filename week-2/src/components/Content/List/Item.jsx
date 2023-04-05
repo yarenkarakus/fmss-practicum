@@ -2,10 +2,14 @@ import React from "react";
 import { useTodo } from "../../../contexts/ToDoContext";
 
 const Item = ({ todo }) => {
-  const { toggleTodo } = useTodo();
+  const { destroyTodo, toggleTodo } = useTodo();
 
   const onChange = (id) => {
     toggleTodo(id);
+  };
+
+  const onDestroy = (id) => {
+    destroyTodo(id);
   };
 
   return (
@@ -18,7 +22,7 @@ const Item = ({ todo }) => {
           onChange={() => onChange(todo.id)}
         />
         <label>{todo.text}</label>
-        <button className="destroy"></button>
+        <button className="destroy" onClick={() => onDestroy(todo.id)}></button>
       </div>
     </li>
   );
