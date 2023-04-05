@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 const ToDoContext = createContext();
 
 export const ToDoProvider = ({ children }) => {
+  const [filter, setFilter] = useState("active");
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -41,6 +42,8 @@ export const ToDoProvider = ({ children }) => {
     addTodo,
     toggleTodo,
     destroyTodo,
+    filter,
+    setFilter,
   };
 
   return <ToDoContext.Provider value={values}>{children}</ToDoContext.Provider>;
